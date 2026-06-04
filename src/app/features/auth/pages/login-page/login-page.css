@@ -1,0 +1,364 @@
+main {
+    background:
+        linear-gradient(180deg,
+            rgba(20, 25, 40, .95),
+            rgba(5, 8, 15, .98));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+/* PANEL PRINCIPAL */
+.frame {
+    position: relative;
+    width: 380px;
+    background:
+        linear-gradient(180deg,
+            rgba(20, 25, 40, .95),
+            rgba(5, 8, 15, .98));
+
+    border: 2px solid #c8a44d;
+    box-shadow:
+        0 0 40px rgba(255, 215, 0, .12),
+        inset 0 0 40px rgba(255, 215, 0, .05);
+}
+
+/* BORDE INTERIOR */
+.frame-border {
+    position: absolute;
+    inset: .8rem;
+    border: 1px solid rgba(212, 177, 90, .5);
+    pointer-events: none;
+    clip-path: polygon(15px 0,
+            calc(100% - 15px) 0,
+            100% 15px,
+            100% calc(100% - 15px),
+            calc(100% - 15px) 100%,
+            15px 100%,
+            0 calc(100% - 15px),
+            0 15px);
+}
+
+/* TOP LEFT */
+.tl {
+    top: -2px;
+    left: -2px;
+}
+
+.tl::before,
+.tl::after {
+    content: "";
+    position: absolute;
+    background: #d4b15a;
+}
+
+.tl::before {
+    width: 40px;
+    height: 2px;
+}
+
+.tl::after {
+    width: 2px;
+    height: 40px;
+}
+
+/* TOP RIGHT */
+.tr {
+    top: -2px;
+    right: -2px;
+}
+
+.tr::before,
+.tr::after {
+    content: "";
+    position: absolute;
+    background: #d4b15a;
+}
+
+.tr::before {
+    width: 40px;
+    height: 2px;
+    right: 0;
+}
+
+.tr::after {
+    width: 2px;
+    height: 40px;
+    right: 0;
+}
+
+/* BOTTOM LEFT */
+.bl {
+    bottom: -2px;
+    left: -2px;
+}
+
+.bl::before,
+.bl::after {
+    content: "";
+    position: absolute;
+    background: #d4b15a;
+}
+
+.bl::before {
+    width: 40px;
+    height: 2px;
+    bottom: 0;
+}
+
+.bl::after {
+    width: 2px;
+    height: 40px;
+    bottom: 0;
+}
+
+/* BOTTOM RIGHT */
+.br {
+    bottom: -2px;
+    right: -2px;
+}
+
+.br::before,
+.br::after {
+    content: "";
+    position: absolute;
+    background: #d4b15a;
+}
+
+.br::before {
+    width: 40px;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+}
+
+.br::after {
+    width: 2px;
+    height: 40px;
+    bottom: 0;
+    right: 0;
+}
+
+/* ORNAMENTOS */
+.ornament {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 1.2rem;
+    background: linear-gradient(90deg,
+            transparent,
+            #d4b15a,
+            transparent);
+    opacity: .8;
+}
+
+.ornament.top {
+    top: 0;
+}
+
+.ornament.bottom {
+    bottom: 0;
+}
+
+/* CONTENIDO */
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-box {
+    margin: 0rem 2rem 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h1 {
+    color: #d4b15a;
+    text-align: center;
+    letter-spacing: .4rem;
+    font-size: 1.8rem;
+    margin: .7rem 0rem 1rem 0rem;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    background: rgba(5, 10, 20, .9);
+    border: 1px solid rgba(212, 177, 90, .5);
+    border-radius: .3rem;
+    padding: 1.2rem 0rem 1.2rem 2.7rem;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: .3s;
+    z-index: 1;
+}
+
+input:focus {
+    border-color: #d4b15a;
+    box-shadow:
+        0 0 15px rgba(212, 177, 90, .25),
+        inset 0 0 10px rgba(212, 177, 90, .08);
+}
+
+.email-box,
+.password-box {
+    position: relative;
+}
+
+.email-box{
+    margin-bottom: 1.5rem;
+}
+
+.icon-user-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    margin-left: 1rem;
+}
+
+.password-box input {
+    padding-right: 3rem;
+}
+
+i {
+    position: relative;
+    color: #a5a5a5;
+}
+
+.fa-lock {
+    margin-left: 1rem;
+}
+
+.icon-circle {
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.icon-circle:hover {
+    background-color: rgba(133, 133, 133, 0.5);
+    transition: 0.5s;
+}
+
+.icons-password-cont {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* BOTON */
+button {
+    height: 60px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 1.5rem 0rem 1.5rem 0rem;
+    background:
+        linear-gradient(180deg,
+            #e3c362,
+            #684b1e);
+    clip-path: polygon(6px 0,
+            calc(100% - 6px) 0,
+            100% 6px,
+            100% calc(100% - 6px),
+            calc(100% - 6px) 100%,
+            6px 100%,
+            0 calc(100% - 6px),
+            0 6px);
+    transition: .3s;
+    z-index: 1;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .35);
+}
+
+a {
+    color: #329df5;
+    text-decoration: none;
+    align-self: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.link-password-forget {
+    margin-top: 1rem;
+}
+
+p,
+label {
+    color: #9d8e8e;
+}
+
+label {
+    margin-right: .8rem;
+}
+
+.img-puzzle {
+    position: absolute;
+    align-self: center;
+    top: -3rem;
+    width: 9.250rem;
+    z-index: 100;
+}
+
+.img-logo {
+    width: 75%;
+    align-self: center;
+    margin-top: 5rem;
+}
+
+.account-box {
+    text-align: center;
+}
+
+.error-box {
+    display: flex;
+    justify-content: flex-start;
+    margin: .7rem 0rem .7rem 2rem;
+}
+
+.error-box .fa-xmark,
+.error-box li {
+    color: #cd2020;
+}
+
+.alert-box {
+    display: flex;
+    margin: 1.5rem 0rem 0rem .5rem;
+}
+
+.alert-box .fa-triangle-exclamation,
+.alert-box p {
+    color: #eff221;
+}
+
+.alert-box p {
+    margin-left: .5rem;
+}
