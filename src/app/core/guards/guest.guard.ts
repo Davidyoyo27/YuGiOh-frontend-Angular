@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
 import { AuthStore } from "../../features/auth/store/auth.store";
 
-
+// para rutas publicas e invitados
 export const guestGuard: CanActivateFn = () => {
 
     const authStore = inject(AuthStore);

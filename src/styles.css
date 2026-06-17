@@ -1,3 +1,15 @@
+:root {
+  --primary-color: linear-gradient(180deg,
+      rgba(20, 25, 40, .95),
+      rgba(5, 8, 15, .98));
+  --font-type: sans-serif;
+  --color-title-first: #d4b15a;
+  --color-title-second: #e8e7e7;
+  --color-text: #9d8e8e;
+  --color-link-first: #329df5;
+  --color-link-second: #d400ff;
+}
+
 /* You can add global styles to this file, and also import other style files */
 * {
   margin: 0;

@@ -1,8 +1,5 @@
 main {
-    background:
-        linear-gradient(180deg,
-            rgba(20, 25, 40, .95),
-            rgba(5, 8, 15, .98));
+    background: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,7 +178,7 @@ main {
 }
 
 h1 {
-    color: #d4b15a;
+    color: var(--color-title-first);
     text-align: center;
     letter-spacing: .4rem;
     font-size: 1.8rem;
@@ -214,7 +211,7 @@ input:focus {
     position: relative;
 }
 
-.email-box{
+.email-box {
     margin-bottom: 1.5rem;
 }
 
@@ -298,7 +295,7 @@ button:hover {
 }
 
 a {
-    color: #329df5;
+    color: var(--color-link-first);
     text-decoration: none;
     align-self: center;
 }
@@ -313,7 +310,7 @@ a:hover {
 
 p,
 label {
-    color: #9d8e8e;
+    color: var(--color-text);
 }
 
 label {
@@ -341,24 +338,19 @@ label {
 .error-box {
     display: flex;
     justify-content: flex-start;
-    margin: .7rem 0rem .7rem 2rem;
 }
 
-.error-box .fa-xmark,
-.error-box li {
+.error-box,
+.error-box li,
+.alert-box li {
     color: #cd2020;
-}
-
-.alert-box {
-    display: flex;
-    margin: 1.5rem 0rem 0rem .5rem;
-}
-
-.alert-box .fa-triangle-exclamation,
-.alert-box p {
-    color: #eff221;
 }
 
 .alert-box p {
     margin-left: .5rem;
+}
+
+.error-box,
+.alert-box {
+    margin: .7rem 0rem .7rem 2rem;
 }

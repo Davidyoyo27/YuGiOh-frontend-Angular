@@ -2,10 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -39,6 +40,7 @@ export default class LoginPage {
       .subscribe({
 
         next: () => {
+
           this.errorData.set([]);
           this.errorAccount.set('');
         },

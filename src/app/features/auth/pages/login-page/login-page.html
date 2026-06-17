@@ -38,19 +38,20 @@
               [(ngModel)]="password"
             />
           </div>
-          @for (error of errorData(); track error.textError) {
-            <div class="error-box">
-              <li>{{ error.textError }}</li>
-            </div>
-          }
-          <div class="alert-box">
-            @if (errorAccount()) {
-              <i class="fa-solid fa-triangle-exclamation"></i>
-              <p>{{ errorAccount() }}</p>
+          <div class="validations-box">
+            @for (error of errorData(); track error.textError) {
+              <div class="error-box">
+                <li>{{ error.textError }}</li>
+              </div>
             }
+            <div class="alert-box">
+              @if (errorAccount()) {
+                <li>{{ errorAccount() }}</li>
+              }
+            </div>
           </div>
         </div>
-        <a class="link-password-forget" href="">¿Olvidaste tu contraseña?</a>
+        <a class="link-password-forget" routerLink="/forgot-your-password">¿Olvidaste tu contraseña?</a>
         <button type="button" (click)="login()" [disabled]="isLoading()">
           @if (isLoading()) {
             <span>Cargando...</span>
@@ -60,7 +61,7 @@
         </button>
         <div class="account-box">
           <label for="">¿No tienes cuenta?</label>
-          <a href="">Regístrate aquí</a>
+          <a routerLink="/register_account">Regístrate aquí</a>
         </div>
       </form>
     </div>
