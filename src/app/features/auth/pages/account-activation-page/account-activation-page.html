@@ -1,0 +1,47 @@
+<main>
+  <div class="content-logo">
+    <img src="assets/images/eye-of-ra.png" alt="YuGiOh Logo" />
+    <h1 for="">Estadísticas de Duelo</h1>
+  </div>
+  <form #activationForm="ngForm" class="content">
+    <div class="content-box">
+      <p-toast />
+      <h2>Activa tu cuenta</h2>
+      <p class="sended-email-text">Hemos enviado un codigo de activación a tu correo.</p>
+      <input type="email" placeholder="Correo" [(ngModel)]="email" name="email" />
+      <label class="insert-code-text" for="">Ingresa el código de 6 digitos</label>
+      <p-inputotp
+        #otpModel="ngModel"
+        size="large"
+        [(ngModel)]="codeActivation"
+        name="codeActivation"
+        [length]="8"
+        [invalid]="otpModel.invalid && activationForm.submitted"
+        required
+      />
+      <div class="validations-box">
+        <div class="error-box">
+          @for (error of errorData(); track error.textError) {
+            <li>{{ error.textError }}</li>
+          }
+        </div>
+        <div class="alert-box">
+          @if (singleError()) {
+            <li>{{ singleError() }}</li>
+          }
+        </div>
+      </div>
+      <button type="submit" (click)="activateAccount()">
+        @if (isLoading()) {
+          <span>Cargando...</span>
+        } @else {
+          <span>Activar cuenta</span>
+        }
+      </button>
+      <div class="link-box">
+        <label for="">Volver a </label>
+        <a href="">iniciar sesión</a>
+      </div>
+    </div>
+  </form>
+</main>
