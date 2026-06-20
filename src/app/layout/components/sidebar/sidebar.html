@@ -1,0 +1,29 @@
+<aside [class.collapsed]="isCollapsed()">
+  <div class="cont-image">
+    @if (isCollapsed()) {
+      <img
+        class="puzzle"
+        src="assets/images/millennium-puzzle-v2.webp"
+        alt="YuGiOh Logo"
+        (click)="toggleSidebar()"
+      />
+    } @else {
+      <img
+        class="pyramid"
+        src="assets/images/yugioh-logo-v2.webp"
+        alt="YuGiOh Logo"
+        (click)="toggleSidebar()"
+      />
+    }
+  </div>
+  <nav>
+    <a href="#" class="menu-item active">
+      <i class="pi pi-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    <a (click)="logout()" href="#" class="menu-item">
+      <i class="pi pi-sign-out" style="color: var(--color-type-red)"></i>
+      <span class="menu-text" style="color: var(--color-type-red)">Cerrar_Sesión</span>
+    </a>
+  </nav>
+</aside>
