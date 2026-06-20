@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { AuthService } from '../../../auth/services/auth.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
@@ -7,11 +6,4 @@ import { AuthService } from '../../../auth/services/auth.service';
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
-export default class HomePage {
-  private authService = inject(AuthService);
-
-  logout(): void {
-    this.authService.logout().subscribe();
-  }
-
-}
+export default class HomePage { }
