@@ -1,4 +1,8 @@
 nav {
     background-color: var(--secondary-color);
-    height: 7.5rem;
+    height: 3rem;
+}
+
+p{
+    color: #ffff;
 }

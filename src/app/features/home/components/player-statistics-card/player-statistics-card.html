@@ -1,0 +1,12 @@
+<div class="box" style="color: {{ color() }}">
+  <div class="cont-text-icon">
+    <i class="{{ icon() }}"></i>
+    <label for="">{{ text() }}</label>
+  </div>
+  <span>
+    {{ dataNumber() }}
+    @if (percentage()) {
+      %
+    }
+  </span>
+</div>

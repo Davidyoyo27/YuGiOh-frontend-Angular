@@ -1,3 +1,39 @@
 <main>
-  <p>home-page works!</p>
+  <h1>{{ titleWelcome() }}</h1>
+  <p>Resumen general de tu actividad</p>
+  <div class="container-primary-stats-player">
+    @if (playerStatistics()) {
+      <app-player-statistics-card
+        [color]="'rgb(111, 206, 109)'"
+        [icon]="'pi pi-trophy'"
+        [text]="'VICTORIAS'"
+        [dataNumber]="playerStatistics()!.victories"
+      />
+      <app-player-statistics-card
+        [color]="'rgb(214, 53, 53)'"
+        [text]="'DERROTAS'"
+        [dataNumber]="playerStatistics()!.defeats"
+      />
+      <app-player-statistics-card
+        [color]="'rgb(232, 211, 23)'"
+        [text]="'EMPATES'"
+        [dataNumber]="playerStatistics()!.ties"
+      />
+      <app-player-statistics-card
+        [color]="'rgb(115, 185, 231)'"
+        [text]="'% VICTORIAS'"
+        [dataNumber]="playerStatistics()!.percentageVictories"
+        [percentage]="true"
+      />
+    } @else {
+      <p class="no-statistics">
+        {{ errorData() }}
+      </p>
+    }
+  </div>
+  <div class="container-second-stats-player">
+    <div class="last-duels-box">
+      <app-player-lasts-duels/>
+    </div>
+  </div>
 </main>

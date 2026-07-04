@@ -16,6 +16,8 @@
 
   /* texts */
   --color-text: #9d8e8e;
+  --color-text-second: #cdcdcd;
+  --color-text-third: #8d8d8d;
 
   /* links */
   --color-link-first: #329df5;
@@ -23,6 +25,15 @@
 
   /* colors types */
   --color-type-red: rgb(220, 17, 17);
+
+  /* colors border */
+  --color-border-primary: #545454;
+
+  /* colors result duels */
+  --color-victory: #4CAF50;
+  --color-defeat: #d9534f;
+  --color-draw: #d4b15a;
+
 }
 
 /* You can add global styles to this file, and also import other style files */

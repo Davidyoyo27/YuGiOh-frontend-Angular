@@ -1,0 +1,39 @@
+h1 {
+    color: var(--color-title-second);
+    margin-bottom: 1rem;
+}
+
+p {
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+h1,
+p {
+    margin-left: 2rem;
+}
+
+main {
+    background-color: var(--secondary-color);
+    font-family: var(--font-type);
+}
+
+.no-statistics {
+    color: var(--color-type-red);
+}
+
+.container-primary-stats-player {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container-second-stats-player{
+    display: flex;
+    align-items: center;
+}
+
+.last-duels-box{
+    margin: 5rem 0rem 0rem 3rem;
+}
