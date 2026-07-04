@@ -29,7 +29,7 @@ export class AuthService {
             tap((resp) => {
                 this.authStore.setUser(resp.user);
                 this.router.navigate(['/home']);
-            })            
+            })
         );
     }
 

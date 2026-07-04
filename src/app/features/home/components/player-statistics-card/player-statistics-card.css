@@ -1,0 +1,29 @@
+.box {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: .5rem;
+    border: 2px solid var(--color-border-primary);
+    width: 11rem;
+    height: 7rem;
+}
+
+.cont-text-icon {
+    display: flex;
+}
+
+i {
+    font-size: 1.3rem;
+    margin-right: .5rem;
+}
+
+i,
+label {
+    text-align: center;
+}
+
+span {
+    font-size: 2.5rem;
+}

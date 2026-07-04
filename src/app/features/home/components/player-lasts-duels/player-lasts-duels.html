@@ -1,0 +1,29 @@
+<p>{{ errorData() }}</p>
+@if (statisticsPlayer().length > 0) {
+  <div class="last-duels-card">
+    <h3>Últimos duelos</h3>
+    @for (duel of statisticsPlayer(); track duel.numero_sesion) {
+      <div class="duel">
+        <!-- aca va la imagen del perfil del jugador oponente -->
+        <!-- etiqueta -->
+        <!-- nick del oponente -->
+        <span class="player-name"> vs {{ duel.nickname }} </span>
+        @if (duel.victorias > duel.derrotas) {
+          <!-- resultado del bloque de enfrentamientos -->
+          <span class="result victory"> Victoria </span>
+          <span class="score"> {{ duel.victorias }} - {{ duel.derrotas }} </span>
+        } @else if (duel.empates > 0) {
+          <!-- resultado del bloque de enfrentamientos -->
+          <span class="result draw"> Empate </span>
+          <span class="score"> {{ duel.empates }} - {{ duel.empates }} </span>
+        } @else {
+          <!-- resultado del bloque de enfrentamientos -->
+          <span class="result defeat"> Derrota </span>
+          <span class="score"> {{ duel.victorias }} - {{ duel.derrotas }} </span>
+        }
+        <!-- tiempo desde la finalizacion del bloque de duelo/s -->
+        <span class="time"> {{ duel.relativeDate }} </span>
+      </div>
+    }
+  </div>
+}
