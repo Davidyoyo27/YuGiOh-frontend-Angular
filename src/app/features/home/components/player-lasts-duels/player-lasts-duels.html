@@ -5,7 +5,7 @@
     @for (duel of statisticsPlayer(); track duel.numero_sesion) {
       <div class="duel">
         <!-- aca va la imagen del perfil del jugador oponente -->
-        <!-- etiqueta -->
+        <img src="{{ authStore.user()?.avatarUrl }}" alt="Avatar Player Profile">
         <!-- nick del oponente -->
         <span class="player-name"> vs {{ duel.nickname }} </span>
         @if (duel.victorias > duel.derrotas) {
