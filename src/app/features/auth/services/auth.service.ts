@@ -3,18 +3,20 @@ import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { LoginResponse } from "../interfaces/auth-login.interface";
 import { AuthStore } from "../store/auth.store";
-import { catchError, finalize, map, of, tap } from "rxjs";
+import { catchError, finalize, map, of, switchMap, tap } from "rxjs";
 import { Router } from '@angular/router';
 import { CheckAuthResponse } from "../interfaces/check-auth-response.interface";
 import { CreateUserResponse } from "../interfaces/auth-create-user.interface";
 import { UserAccountActivationResponse } from "../interfaces/auth-user-account-activation.interface";
 import { StandardResponse } from "../interfaces/standard-response.interface";
 import { ResetPasswordResponse } from "../interfaces/auth-reset-password.interface";
+import { StorageService } from "../../perfil/services/storage.service";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     // injects
     router = inject(Router);
+    private storageService = inject(StorageService);
 
     // privates
     private http = inject(HttpClient);
@@ -53,10 +55,22 @@ export class AuthService {
             { withCredentials: true }
         )
         .pipe(
-            tap((resp) => {
+            // switchMap permite encadenar otra peticion HTTP
+            switchMap((resp) => {
                 this.authStore.setUser(resp.user);
+
+                // si ya tiene avatar
+                if(resp.user.avatarUrl) return of(true);
+
+                // si no tiene avatar
+                return this.storageService.playerImageDefaultPerfil().pipe(
+                    tap((avatar) => {
+                        this.authStore.setDefaultAvatar(avatar.url);
+                    }),
+
+                    map(() => true)
+                );
             }),
-            map(() => true),
             catchError(() => {
                 this.authStore.clearAuth();
                 return of(false);

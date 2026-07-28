@@ -17,9 +17,13 @@
     }
   </div>
   <div>
-    <a href="#" class="menu-item active">
+    <a routerLink="/home" routerLinkActive="active" class="menu-item">
       <i class="pi pi-home"></i>
       <span class="menu-text">Inicio</span>
+    </a>
+    <a routerLink="/player-perfil" routerLinkActive="active" class="menu-item">
+      <i class="pi pi-user"></i>
+      <span class="menu-text">Perfil</span>
     </a>
     <button (click)="logout()" class="menu-item">
       <i class="pi pi-sign-out" style="color: var(--color-type-red)"></i>

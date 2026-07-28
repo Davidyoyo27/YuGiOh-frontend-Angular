@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="cont-text">
+      <h1>Crear perfil</h1>
+      <p>Crea tu perfil de jugador</p>
+    </div>
+    <div class="container">
+      <p-toast />
+      <div class="cont-inputs">
+        <label for="">Nombre de usuario</label>
+        <input [(ngModel)]="gameNickName" type="text" />
+        <div class="cont-buttons">
+          <button (click)="createGameProfile()">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
