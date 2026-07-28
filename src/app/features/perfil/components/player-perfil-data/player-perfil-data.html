@@ -1,0 +1,21 @@
+<p-toast />
+<div class="background">
+  <div class="container">
+    <div class="avatar-frame">
+      <img src="{{ playerAvatarImageUrl() }}" alt="Avatar" />
+    </div>
+    <div class="data-box">
+      <h1>{{ playerNickName() }}</h1>
+      <p class="sub-title">El corazón de las cartas</p>
+      <p class="member-date">Miembro desde: {{ playerDateCreated() }}</p>
+      <button type="button" (click)="openFileSelector()">Cambiar imagen de perfil</button>
+      <input
+        #fileInput
+        type="file"
+        accept="image/png,image/jpeg,image/webp"
+        hidden
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  </div>
+</div>

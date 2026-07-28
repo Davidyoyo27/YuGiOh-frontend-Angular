@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
 import { MainLayout } from './layout/pages/main-layout/main-layout';
+import { hasProfileGuard } from './core/guards/has-profile-guard';
 
 export const routes: Routes = [
     {
@@ -38,6 +39,20 @@ export const routes: Routes = [
                 path: 'home',
                 loadComponent: () => import('./features/home/pages/home-page/home-page'),
             },
+            {
+                path: 'player-perfil',
+                loadComponent: () => import('./features/perfil/pages/player-perfil/player-perfil'),
+            },
+            {
+                path: 'player-perfil/edit-perfil',
+                loadComponent: () => import('./features/perfil/pages/edit-perfil/edit-perfil'),
+            },
+            {
+                path: 'player-perfil/create-perfil',
+                loadComponent: () => import('./features/perfil/pages/create-player-perfil-page/create-player-perfil-page'),
+                // guard que verifica si ya contiene un perfil de jugador creado el usuario y redireccion automatica
+                canActivate: [hasProfileGuard],
+            }
         ]
     },
     {

@@ -10,10 +10,13 @@ export class AuthStore {
         // si es true "todavia no se si el usuario esta autenticado o no."
         isCheckingAuth: true,
     });
+    defaultAvatar = signal<string>('');
 
     public user = computed(() => this.state().user);
     public isAuthenticated = computed(() => this.state().isAuthenticated);
     public isCheckingAuth = computed(() => this.state().isCheckingAuth);
+
+    playerAvatar = computed(() => this.user()?.avatarUrl ?? this.defaultAvatar());
 
     setUser(user: User): void {
         this.state.update(state => ({
@@ -38,6 +41,10 @@ export class AuthStore {
             ...state,
             isCheckingAuth: value
         }));
+    }
+
+    setDefaultAvatar(url: string): void {
+        this.defaultAvatar.set(url);
     }
 
 }

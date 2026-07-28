@@ -1,0 +1,58 @@
+<div class="main">
+  <app-player-perfil-data
+    [playerNickName]="playerNickName()"
+    [playerDateCreated]="playerDateCreated()"
+    [playerAvatarImageUrl]="playerAvatarImageUrl()"
+  />
+  <div class="container-principal">
+    @if (playerStatistics()) {
+      <div class="container-stats-player">
+        <app-player-statistics-card
+          [color]="'rgb(111, 206, 109)'"
+          [icon]="'pi pi-trophy'"
+          [text]="'VICTORIAS'"
+          [dataNumber]="playerStatistics()!.victories"
+        />
+        <app-player-statistics-card
+          [color]="'rgb(214, 53, 53)'"
+          [text]="'DERROTAS'"
+          [dataNumber]="playerStatistics()!.defeats"
+        />
+        <app-player-statistics-card
+          [color]="'rgb(232, 211, 23)'"
+          [text]="'EMPATES'"
+          [dataNumber]="playerStatistics()!.ties"
+        />
+        <app-player-statistics-card
+          [color]="'rgb(115, 185, 231)'"
+          [text]="'% VICTORIAS'"
+          [dataNumber]="playerStatistics()!.percentageVictories"
+          [percentage]="true"
+        />
+      </div>
+    }
+    @if (errorData()) {
+      <div class="no-player-perfil">
+        <p class="no-statistics">
+          {{ errorData() }}
+        </p>
+        <button class="gold-btn" (click)="goToCreateProfile()">Crear perfil de jugador</button>
+      </div>
+    }
+    <div class="data-card-player">
+      <h3>Información del Usuario</h3>
+      <div class="row">
+        <span class="data"> Nombre de usuario: </span>
+        <!-- se llama a la data del usuario que esta disponible en el auth -->
+        <span class="user-data">{{ authStore.user()?.userName }}</span>
+      </div>
+      <div class="row">
+        <span class="data"> Correo: </span>
+        <span class="user-data">{{ authStore.user()?.email }}</span>
+      </div>
+      <div class="cont-button">
+        <button (click)="goToProfileEdit()">Editar perfil</button>
+      </div>
+    </div>
+  </div>
+</div>
