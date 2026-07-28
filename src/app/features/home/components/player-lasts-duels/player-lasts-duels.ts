@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { LastDuels } from '../../interfaces/player-lasts-duels.interface';
 import { relativeTime } from '../../../../shared/utils/relative-time.util';
+import { AuthStore } from '../../../auth/store/auth.store';
 
 @Component({
   selector: 'app-player-lasts-duels',
@@ -12,6 +13,7 @@ import { relativeTime } from '../../../../shared/utils/relative-time.util';
 export class PlayerLastsDuels implements OnInit {
   // injects
   homeService = inject(HomeService);
+  authStore = inject(AuthStore);
 
   // signals
   errorData = signal<string>('');
