@@ -61,7 +61,7 @@ export default class PlayerPerfil implements OnInit {
   });
 
   goToProfileEdit(): void {
-    this.router.navigate(['/player-perfil/edit-perfil']);
+    this.router.navigate(['/player-perfil/edit-options']);
   }
 
   goToCreateProfile(): void {
