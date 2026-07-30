@@ -34,6 +34,9 @@
   --color-defeat: #d9534f;
   --color-draw: #d4b15a;
 
+  /* colors icons */
+  --color-icon-primary: #bd7dca;
+
 }
 
 /* You can add global styles to this file, and also import other style files */

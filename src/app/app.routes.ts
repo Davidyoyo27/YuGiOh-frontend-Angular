@@ -52,6 +52,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./features/perfil/pages/create-player-perfil-page/create-player-perfil-page'),
                 // guard que verifica si ya contiene un perfil de jugador creado el usuario y redireccion automatica
                 canActivate: [hasProfileGuard],
+            },
+            {
+                path: 'player-perfil/edit-options',
+                loadComponent: () => import('./features/perfil/pages/edit-perfil-options-page/edit-perfil-options-page'),
             }
         ]
     },
