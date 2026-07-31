@@ -68,6 +68,19 @@ button {
     z-index: 1;
 }
 
+.button-reverse {
+    height: 3rem;
+    border: 1px solid rgb(85, 37, 187);
+    color: rgb(114, 68, 215);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: center;
+    background: rgba(0, 0, 0, 0);
+    transition: .3s;
+    z-index: 1;
+}
+
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(141, 25, 243, 0.55);
