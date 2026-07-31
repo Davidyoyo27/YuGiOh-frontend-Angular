@@ -56,6 +56,10 @@ export const routes: Routes = [
             {
                 path: 'player-perfil/edit-options',
                 loadComponent: () => import('./features/perfil/pages/edit-perfil-options-page/edit-perfil-options-page'),
+            },
+            {
+                path: 'player-perfil/edit-options/edit-user-account',
+                loadComponent: () => import('./features/perfil/pages/edit-user-account-page/edit-user-account-page'),
             }
         ]
     },
