@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="cont-text">
+    <h1>Editar perfil</h1>
+    <p>Actualiza tu perfil de usuario</p>
+  </div>
+  <div class="container">
+    <p-toast />
+    <div class="cont-inputs">
+      <label for="">Nombre de usuario</label>
+      <input [(ngModel)]="userName" type="text" />
+      <label for="">Apellido</label>
+      <input [(ngModel)]="userLastName" type="text" />
+      <div class="cont-buttons">
+        <button (click)="backToMenuOptions()" class="button-reverse">Cancelar</button>
+        <button (click)="saveChangesUserAccount()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
