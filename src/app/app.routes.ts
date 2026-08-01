@@ -60,6 +60,10 @@ export const routes: Routes = [
             {
                 path: 'player-perfil/edit-options/edit-player-perfil',
                 loadComponent: () => import('./features/perfil/pages/edit-player-perfil-page/edit-player-perfil-page'),
+            },
+            {
+                path: 'player-perfil/edit-options/change-user-password',
+                loadComponent: () => import('./features/perfil/pages/change-user-account-password-page/change-user-account-password-page'),
             }
         ]
     },
