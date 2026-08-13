@@ -45,3 +45,72 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* estilos del table de la libreria PrimeNG */
+.dark-table .p-datatable-thead > tr > th {
+  background: #141414;
+  color: #d4af37;
+  border-color: #333;
+}
+
+.dark-table .p-datatable-tbody > tr > td {
+  background: #1a1a1a;
+  color: #eeeeee;
+  border-color: #333;
+}
+
+.dark-table .p-datatable-tbody > tr:hover > td {
+  background: #242424;
+}
+
+.dark-table .p-paginator {
+  background: #141414;
+  color: #eeeeee;
+  border-color: #333;
+}
+
+.dark-table .p-paginator .p-paginator-page {
+  color: #eeeeee;
+}
+
+.dark-table .p-paginator .p-paginator-page:hover {
+  background: #333;
+  color: #d4af37;
+}
+
+/* Contenedor de paginación */
+.dark-table .p-paginator {
+  background: #141414;
+  color: #eeeeee;
+  border-color: #333;
+}
+
+/* Botones anterior / siguiente / primera / última */
+.dark-table .p-paginator .p-paginator-prev,
+.dark-table .p-paginator .p-paginator-next,
+.dark-table .p-paginator .p-paginator-first,
+.dark-table .p-paginator .p-paginator-last {
+  color: #eeeeee;
+}
+
+/* Botones de número de página */
+.dark-table .p-paginator .p-paginator-page {
+  color: #eeeeee;
+}
+
+/* Hover de páginas */
+.dark-table .p-paginator .p-paginator-page:hover,
+.dark-table .p-paginator .p-paginator-prev:hover,
+.dark-table .p-paginator .p-paginator-next:hover,
+.dark-table .p-paginator .p-paginator-first:hover,
+.dark-table .p-paginator .p-paginator-last:hover {
+  background: #292929;
+  color: #d4af37;
+}
+
+/* Página actual */
+.dark-table .p-paginator .p-paginator-page-selected {
+  background: #d4af37;
+  color: #141414;
+  border-color: #d4af37;
+}

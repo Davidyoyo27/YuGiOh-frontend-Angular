@@ -6,6 +6,7 @@ import { PlayerStatistics } from '../../../home/interfaces/player-statistics.int
 import { AuthStore } from '../../../auth/store/auth.store';
 import { Router } from '@angular/router';
 import { FormsModule } from "@angular/forms";
+import { formatDateZone } from '../../../../shared/utils/format-date-zone.util';
 
 @Component({
   selector: 'app-player-perfil',
@@ -48,14 +49,7 @@ export default class PlayerPerfil implements OnInit {
     if (!dateCreated) return 'Sin fecha de creación';
 
     // fecha de zona horaria desde chile
-    const dateZoneChile = new Date(dateCreated).toLocaleDateString('es-CL');
-    const dateCreatedSplited = dateZoneChile.split('-');
-
-    const year = dateCreatedSplited?.[2];
-    const month = dateCreatedSplited?.[1];
-    const day = dateCreatedSplited?.[0];
-
-    const finalDate = `${day}/${month}/${year}`;
+    const finalDate = formatDateZone(dateCreated);
 
     return finalDate;
   });

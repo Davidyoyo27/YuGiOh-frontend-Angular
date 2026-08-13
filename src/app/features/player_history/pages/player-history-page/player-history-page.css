@@ -1,0 +1,23 @@
+h1 {
+    color: var(--color-title-first);
+}
+
+p {
+    color: red;
+}
+
+.wrapper {
+    font-family: var(--font-type);
+}
+
+.cont-text {
+    margin-left: 3rem;
+}
+
+.container {
+    padding: 3rem;
+}
+
+.error-box {
+    text-align: center;
+}
