@@ -64,7 +64,11 @@ export const routes: Routes = [
             {
                 path: 'player-perfil/edit-options/change-user-password',
                 loadComponent: () => import('./features/perfil/pages/change-user-account-password-page/change-user-account-password-page'),
-            }
+            },
+            {
+                path: 'player-history',
+                loadComponent: () => import('./features/player_history/pages/player-history-page/player-history-page'),
+            },
         ]
     },
     {

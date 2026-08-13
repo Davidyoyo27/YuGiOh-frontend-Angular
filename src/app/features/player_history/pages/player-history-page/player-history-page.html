@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="cont-text">
+    <h1>Historial de Duelos</h1>
+  </div>
+  <div class="container">
+    @if (errorData()) {
+      <div class="error-box">
+        <p>{{ errorData() }}</p>
+      </div>
+    } @else {
+      <p-table
+        class="dark-table"
+        [value]="playerHistoryDuels()"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5, 10, 20, 50]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Resultado</th>
+            <th>Oponente</th>
+            <th>LP Finales</th>
+            <th>Fecha</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-duel>
+          <tr>
+            @if (duel.result === 'victoria') {
+              <td style="color: #3bdd40">{{ duel.result }}</td>
+            } @else if (duel.result === 'derrota') {
+              <td style="color: #d73630">{{ duel.result }}</td>
+            } @else {
+              <!-- empate -->
+              <td style="color: #e0b13a">{{ duel.result }}</td>
+            }
+            <td>{{ duel.opponent }}</td>
+            <td>{{ duel.finalLP }}</td>
+            <td>{{ duel.finishedAt }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    }
+  </div>
+</div>
