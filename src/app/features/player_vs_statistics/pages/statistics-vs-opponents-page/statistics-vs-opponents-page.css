@@ -1,0 +1,188 @@
+h1, h4 {
+    color: var(--color-title-first);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: var(--color-title-first);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+label,
+p {
+    color: #ffff;
+}
+
+.wrapper {
+    font-family: var(--font-type);
+}
+
+.cont-text {
+    margin-left: 3rem;
+}
+
+.cont-text p {
+    color: var(--color-text-second);
+}
+
+.container {
+    margin: 2rem 4rem 0rem 4rem;
+}
+
+.select-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+button {
+    width: 15rem;
+    height: 2rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    align-self: center;
+    background:
+        linear-gradient(180deg,
+            #e3c362,
+            #684b1e);
+    border-radius: .4rem;
+    transition: .3s;
+    z-index: 1;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .35);
+}
+
+.cont-box {
+    padding: 1rem;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: .5rem;
+    margin-bottom: 2rem;
+}
+
+.cont-box h3 {
+    text-align: left;
+}
+
+.cont-statistics-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0rem 2rem 0rem;
+}
+
+.error-box p {
+    color: var(--color-type-red);
+    text-align: center;
+}
+
+.cont-graph-box {
+    display: flex;
+    justify-content: center;
+}
+
+.cont-graph {
+    position: relative;
+    width: 17rem;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.player-total-duels {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 6.7rem;
+    top: 9rem;
+}
+
+.player-total-duels p {
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.cont-graph-text {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.cont-data {
+    display: flex;
+    gap: 1rem;
+}
+
+.victory-box,
+.defeat-box,
+.draw-box {
+    width: 1rem;
+    height: 1rem;
+    border-radius: .1rem;
+}
+
+.victory-box {
+    background-color: var(--color-victory);
+}
+
+.defeat-box {
+    background-color: var(--color-defeat);
+}
+
+.draw-box {
+    background-color: var(--color-draw);
+}
+
+.cont-data-player {
+    display: flex;
+    margin-left: auto;
+}
+
+.cont-data-player p {
+    margin-right: .3rem;
+}
+
+.dark-select {
+    min-width: 15rem;
+}
+
+:host ::ng-deep .p-select {
+    background: #141414;
+    border: 1px solid #594c2a;
+}
+
+:host ::ng-deep .p-select-label {
+    color: #ffffff;
+}
+
+:host ::ng-deep .p-select-dropdown {
+    color: #d4af37;
+}
+
+:host ::ng-deep .p-select-overlay {
+    background: #141414;
+    border: 1px solid #594c2a;
+}
+
+:host ::ng-deep .p-select-option {
+    color: #ffffff;
+    background: #141414;
+}
+
+:host ::ng-deep .p-select-option:hover {
+    background: #292929;
+}
+
+:host ::ng-deep .p-select-option.p-select-option-selected {
+    background: #594c2a;
+    color: #ffffff;
+}

@@ -69,6 +69,10 @@ export const routes: Routes = [
                 path: 'player-history',
                 loadComponent: () => import('./features/player_history/pages/player-history-page/player-history-page'),
             },
+            {
+                path: 'player-vs-player-statistics',
+                loadComponent: () => import('./features/player_vs_statistics/pages/statistics-vs-opponents-page/statistics-vs-opponents-page'),
+            },
         ]
     },
     {

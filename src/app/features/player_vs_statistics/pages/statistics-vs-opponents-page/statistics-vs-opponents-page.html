@@ -1,0 +1,101 @@
+<div class="wrapper">
+  <div class="cont-text">
+    <h1>Estadísticas vs Oponentes</h1>
+    <p>Selecciona un oponente para ver tus estadísticas contra él.</p>
+  </div>
+  <div class="container">
+    <div class="cont-box">
+      <h4>Seleccionar oponente</h4>
+      <div class="select-box">
+        <p-select
+          class="dark-select"
+          [options]="optionsSelect()"
+          [(ngModel)]="selectedOpponent"
+          optionLabel="nickName"
+          optionValue="id"
+          [filter]="true"
+          filterBy="nickName"
+          [checkmark]="true"
+          placeholder="Selecciona a un oponente"
+        />
+        <button (click)="loadStatisticsPlayerVsPlayer()">Consultar</button>
+      </div>
+    </div>
+    @if (playerVsStatistics()) {
+      <div class="cont-box">
+        <h3>Resumen general vs {{ opponentNickName() }}</h3>
+        <div class="cont-statistics-box">
+          <app-player-statistics-card
+            [color]="'rgb(227, 223, 223)'"
+            [text]="'Total Duelos'"
+            [dataNumber]="playerVsStatistics()!.totalDuels"
+          />
+          <app-player-statistics-card
+            [color]="'rgb(111, 206, 109)'"
+            [icon]="'pi pi-trophy'"
+            [text]="'VICTORIAS'"
+            [dataNumber]="playerVsStatistics()!.winsPlayer1"
+          />
+          <app-player-statistics-card
+            [color]="'rgb(214, 53, 53)'"
+            [text]="'DERROTAS'"
+            [dataNumber]="playerVsStatistics()!.winsPlayer2"
+          />
+          <app-player-statistics-card
+            [color]="'rgb(232, 211, 23)'"
+            [text]="'EMPATES'"
+            [dataNumber]="playerVsStatistics()!.ties"
+          />
+          <app-player-statistics-card
+            [color]="'rgb(115, 185, 231)'"
+            [text]="'% VICTORIAS'"
+            [dataNumber]="playerVsStatistics()!.percentagePlayer1"
+            [percentage]="true"
+          />
+        </div>
+      </div>
+      <div class="cont-graph-box">
+        <div class="cont-graph">
+          <div class="player-total-duels">
+            <p>{{ playerTotalDuelsGames() }}</p>
+            <label for="">Duelos</label>
+            <label for="">Totales</label>
+          </div>
+          <h3>Resultados</h3>
+          <p-chart type="doughnut" [data]="data()" [options]="options()" />
+          <div class="cont-graph-text">
+            <div class="cont-data">
+              <div class="victory-box"></div>
+              <label for="">Victoria</label>
+              <div class="cont-data-player">
+                <p>{{ playerVictories() }}</p>
+                <p>({{ playerPercentageVictories() }}%)</p>
+              </div>
+            </div>
+            <div class="cont-data">
+              <div class="defeat-box"></div>
+              <label for="">Derrota</label>
+              <div class="cont-data-player">
+                <p>{{ playerDefeats() }}</p>
+                <p>({{ playerPercentageDefeats() }}%)</p>
+              </div>
+            </div>
+            <div class="cont-data">
+              <div class="draw-box"></div>
+              <label for="">Empate</label>
+              <div class="cont-data-player">
+                <p>{{ playerTies() }}</p>
+                <p>({{ playerPercentageTies() }}%)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    @if (errorData()) {
+      <div class="error-box">
+        <p>{{ errorData() }}</p>
+      </div>
+    }
+  </div>
+</div>
