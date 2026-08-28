@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="cont-text">
+    <h1>Crear Duelo</h1>
+    <p>Propone la sala y convoca a tu oponente.</p>
+  </div>
+  <div class="container">
+    <p-toast />
+    <div class="cont-inputs">
+      @if (authStore.user()?.profileId) {
+        <label for="">Nombre de la sala</label>
+        <input
+          [(ngModel)]="roomName"
+          type="text"
+          placeholder="Sala Asdasd, Sala Pedro123, Room The KingDuel..."
+        />
+        <label for="">Tipo de duelo</label>
+        <p-select
+          class="dark-select"
+          [options]="optionsSelect()"
+          [(ngModel)]="selectedTypeDuel"
+          optionLabel="typeName"
+          optionValue="id"
+          [filter]="true"
+          filterBy="typeName"
+          [checkmark]="true"
+          placeholder="Selecciona el tipo de duelo"
+        />
+        <label for="">Numero de jugadores</label>
+        <input [(ngModel)]="playersNumber" type="number" min="0" max="2" />
+        <div class="cont-buttons">
+          <button (click)="backToHome()" class="button-reverse-v2">Cancelar</button>
+          <button (click)="createDuelGame()" class="button-v2">Crear sala</button>
+        </div>
+      } @else {
+        <p class="error-no-profile">{{ validationNotProfilePlayer }}</p>
+      }
+    </div>
+  </div>
+</div>

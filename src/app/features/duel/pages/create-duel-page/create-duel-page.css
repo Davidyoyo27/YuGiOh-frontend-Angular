@@ -1,0 +1,127 @@
+p {
+    color: var(--color-text-third);
+    margin-top: 1rem;
+}
+
+h1 {
+    color: var(--color-title-first);
+}
+
+label {
+    color: var(--color-text-second);
+    margin-bottom: 1rem;
+}
+
+input {
+    /* clamp: (minimo, ideal, maximo) */
+    width: clamp(18rem, 50vw, 38rem);
+    margin-bottom: 2rem;
+    padding: .5rem;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid var(--color-border-primary);
+    border-radius: .2rem;
+    color: #ffff;
+}
+
+.wrapper {
+    font-family: var(--font-type);
+}
+
+.cont-text {
+    margin: 0rem 0rem 3rem 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.cont-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button {
+    width: 40%;
+    height: 3rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    align-self: center;
+    background:
+        linear-gradient(180deg,
+            #e3c362,
+            #684b1e);
+    border-radius: .4rem;
+    transition: .3s;
+    z-index: 1;
+}
+
+.button-reverse-v2 {
+    height: 3rem;
+    border: 1px solid #e3c362;
+    color: #e3c362;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: center;
+    background: rgba(0, 0, 0, 0);
+    transition: .3s;
+    z-index: 1;
+}
+
+.button-v2:hover,
+.button-reverse-v2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .35);
+}
+
+.error-no-profile{
+    color: var(--color-type-red);
+}
+
+.dark-select {
+    min-width: 15rem;
+    margin-bottom: 2rem;
+}
+
+:host ::ng-deep .p-select {
+    background: #141414;
+    border: 1px solid #594c2a;
+}
+
+:host ::ng-deep .p-select-label {
+    color: #ffffff;
+}
+
+:host ::ng-deep .p-select-dropdown {
+    color: #d4af37;
+}
+
+:host ::ng-deep .p-select-overlay {
+    background: #141414;
+    border: 1px solid #594c2a;
+}
+
+:host ::ng-deep .p-select-option {
+    color: #ffffff;
+    background: #141414;
+}
+
+:host ::ng-deep .p-select-option:hover {
+    background: #292929;
+}
+
+:host ::ng-deep .p-select-option.p-select-option-selected {
+    background: #594c2a;
+    color: #ffffff;
+}
