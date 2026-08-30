@@ -74,6 +74,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./features/player_vs_statistics/pages/statistics-vs-opponents-page/statistics-vs-opponents-page'),
             },
             {
+                path: 'menu-options-duel',
+                loadComponent: () => import('./features/duel/pages/menu-options-duel-page/menu-options-duel-page'),
+            },
+            {
                 path: 'create-duel',
                 loadComponent: () => import('./features/duel/pages/create-duel-page/create-duel-page'),
             },

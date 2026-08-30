@@ -92,7 +92,7 @@ export default class CreateDuelPage implements OnInit {
   }
 
   backToHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/menu-options-duel']);
   }
 
 }
