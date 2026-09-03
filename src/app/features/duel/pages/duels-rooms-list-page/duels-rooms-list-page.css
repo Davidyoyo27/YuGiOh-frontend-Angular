@@ -52,6 +52,11 @@ button:hover {
     animation: waitingBlink 1.5s ease-in-out infinite;
 }
 
+.error-no-profile{
+    color: var(--color-type-red);
+    text-align: center;
+}
+
 @keyframes waitingBlink {
 
     0%,
