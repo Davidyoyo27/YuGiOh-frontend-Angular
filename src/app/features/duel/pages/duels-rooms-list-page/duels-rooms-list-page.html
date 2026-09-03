@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <p-toast />
+  <div class="cont-text">
+    <h1>Salas de Duelos Disponibles</h1>
+    <p>Unete a una sala y desafia a tu oponente.</p>
+  </div>
+  <div class="table-container">
+    <div class="table-header">
+      <input
+        #searchInput
+        type="text"
+        placeholder="Buscar sala..."
+        (input)="table.filterGlobal(searchInput.value, 'contains')"
+      />
+    </div>
+
+    <p-table
+      class="dark-table"
+      #table
+      [value]="duelRooms()"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 20, 50]"
+      [globalFilterFields]="['roomName']"
+      selectionMode="single"
+      [(selection)]="selectedRoom"
+      dataKey="id"
+    >
+      <ng-template #header>
+        <tr>
+          <th>Sala</th>
+          <th>Tipo</th>
+          <th>Creador</th>
+          <th>Jugadores</th>
+          <th>Creado</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-room>
+        <tr [pSelectableRow]="room">
+          <td>{{ room.roomName }}</td>
+          <td>{{ room.type }}</td>
+          <td>{{ room.roomCreatedBy }}</td>
+          <td>{{ room.playersJoined }} / {{ room.maxPlayers }}</td>
+          <td>{{ room.duelDateCreated }}</td>
+          <td>
+            <p class="waiting">{{ room.status }}...</p>
+          </td>
+          <td>
+            <button>Unirse</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
