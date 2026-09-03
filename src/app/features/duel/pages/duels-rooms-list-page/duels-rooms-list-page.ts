@@ -7,6 +7,7 @@ import { formatDateHourZone } from '../../../../shared/utils/format-date-hour-zo
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { AuthStore } from '../../../auth/store/auth.store';
 
 @Component({
   selector: 'app-duels-rooms-list-page',
@@ -19,6 +20,10 @@ export default class DuelsRoomsListPage implements OnInit {
   // injects
   duelGameService = inject(DuelGameService);
   messageService = inject(MessageService);
+  authStore =  inject(AuthStore);
+
+  // publics
+  public validationNotProfilePlayer: string = 'Debes tener un perfil de jugador creado para poder visualizar las salas de duelos creadas.';
 
   // signals
   duelRooms = signal<DuelRoom[]>([]);
