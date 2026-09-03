@@ -81,6 +81,10 @@ export const routes: Routes = [
                 path: 'create-duel',
                 loadComponent: () => import('./features/duel/pages/create-duel-page/create-duel-page'),
             },
+            {
+                path: 'menu-options-duel/duel-rooms-list',
+                loadComponent: () => import('./features/duel/pages/duels-rooms-list-page/duels-rooms-list-page'),
+            },
         ]
     },
     {
