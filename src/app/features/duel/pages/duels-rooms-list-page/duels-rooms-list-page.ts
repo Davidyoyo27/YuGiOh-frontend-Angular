@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { AuthStore } from '../../../auth/store/auth.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-duels-rooms-list-page',
@@ -20,7 +21,8 @@ export default class DuelsRoomsListPage implements OnInit {
   // injects
   duelGameService = inject(DuelGameService);
   messageService = inject(MessageService);
-  authStore =  inject(AuthStore);
+  authStore = inject(AuthStore);
+  router = inject(Router);
 
   // publics
   public validationNotProfilePlayer: string = 'Debes tener un perfil de jugador creado para poder visualizar las salas de duelos creadas.';
@@ -28,14 +30,38 @@ export default class DuelsRoomsListPage implements OnInit {
   // signals
   duelRooms = signal<DuelRoom[]>([]);
   selectedRoom = signal<DuelRoom | null>(null);
+  validationNotRoomsAvailables = signal<string>('');
 
   ngOnInit(): void {
     this.duelsRoomsCreated();
   }
 
+  joinRoom(room: DuelRoom): void {
+    this.duelGameService.joinDuel(room.id).subscribe({
+      next: (resp) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: resp.message,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error.message
+        });
+      },
+    });
+  }
+
   duelsRoomsCreated(): void {
     this.duelGameService.duelsRooms().subscribe({
       next: (resp) => {
+        
+        if (Array.isArray(resp) && resp.length === 0)
+          return this.validationNotRoomsAvailables.set('No existen salas de duelos disponibles.');
+
         const dataConverted = resp.map((duel) => {
           const dateFormated = formatDateHourZone(duel.duelDateCreated);
           return {

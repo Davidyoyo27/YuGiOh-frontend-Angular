@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { StandardResponse } from "../../auth/interfaces/standard-response.interface";
 import { DuelRoom } from "../interfaces/duel-room-interface";
+import { JoinDuelResponse } from "../interfaces/join-duel-interface";
 
 @Injectable({ providedIn: 'root' })
 export class DuelGameService {
@@ -19,6 +20,13 @@ export class DuelGameService {
 
     duelsRooms() {
         return this.http.get<DuelRoom[]>(`${environment.baseURL}/duel-game/duel-games-created`,
+            { withCredentials: true }
+        );
+    }
+
+    joinDuel(id: number) {
+        return this.http.post<JoinDuelResponse>(`${environment.baseURL}/user-duel-game/${id}/join`,
+            { id },
             { withCredentials: true }
         );
     }
