@@ -4,6 +4,7 @@ import { environment } from "../../../../environments/environment";
 import { StandardResponse } from "../../auth/interfaces/standard-response.interface";
 import { DuelRoom } from "../interfaces/duel-room-interface";
 import { JoinDuelResponse } from "../interfaces/join-duel-interface";
+import { DataDuel } from "../interfaces/data-duel.interface";
 
 @Injectable({ providedIn: 'root' })
 export class DuelGameService {
@@ -27,6 +28,19 @@ export class DuelGameService {
     joinDuel(id: number) {
         return this.http.post<JoinDuelResponse>(`${environment.baseURL}/user-duel-game/${id}/join`,
             { id },
+            { withCredentials: true }
+        );
+    }
+
+    dataPlayersInDuel(id: number) {
+        return this.http.get<DataDuel>(`${environment.baseURL}/user-duel-game/${id}/data-players-in-duel`,
+            { withCredentials: true }
+        );
+    }
+
+    finishDuel(id: number, players: { profileId: number, finalLP: number }[]) {
+        return this.http.post<StandardResponse>(`${environment.baseURL}/user-duel-game/${id}/duel-finished`,
+            { players },
             { withCredentials: true }
         );
     }

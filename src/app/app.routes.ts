@@ -85,6 +85,10 @@ export const routes: Routes = [
                 path: 'menu-options-duel/duel-rooms-list',
                 loadComponent: () => import('./features/duel/pages/duels-rooms-list-page/duels-rooms-list-page'),
             },
+            {
+                path: 'menu-options-duel/duel/:id',
+                loadComponent: () => import('./features/duel/pages/duel/duel'),
+            },
         ]
     },
     {
