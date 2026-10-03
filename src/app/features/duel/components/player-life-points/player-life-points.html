@@ -1,0 +1,23 @@
+<div class="box">
+  <h3>Jugador: {{ playerNickName() }}</h3>
+  <div class="first-section">
+    <div class="life-points">
+      <p>{{ lifePointsPlayer() }}</p>
+    </div>
+    <div class="add-points">
+      <button (click)="addPoints()" class="add">+</button>
+      <button (click)="restPoints()" class="rest">-</button>
+    </div>
+  </div>
+  @if (!lifePointsCalculated()) {
+    <div class="space"></div>
+  } @else {
+    <p>{{ lifePointsCalculated() }}</p>
+  }
+  <div class="points">
+    <button (click)="add(25)">25</button>
+    <button (click)="add(100)">100</button>
+    <button (click)="add(1000)">1000</button>
+    <button (click)="clearlifePointsCalculated()">X</button>
+  </div>
+</div>

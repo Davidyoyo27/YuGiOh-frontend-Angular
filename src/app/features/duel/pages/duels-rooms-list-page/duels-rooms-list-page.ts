@@ -39,6 +39,12 @@ export default class DuelsRoomsListPage implements OnInit {
   joinRoom(room: DuelRoom): void {
     this.duelGameService.joinDuel(room.id).subscribe({
       next: (resp) => {
+
+        if (resp.isRoomDuelCreator) {
+          this.router.navigate(['menu-options-duel/duel', room.id]);
+          return;
+        }
+
         this.messageService.add({
           severity: 'success',
           summary: 'Éxito',

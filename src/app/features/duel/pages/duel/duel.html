@@ -1,0 +1,23 @@
+<div class="container">
+  <p-toast />
+  @if (errorData()) {
+    <p>{{ errorData() }}</p>
+  } @else {
+    <!-- JUGADOR 2 -->
+    <app-player-life-points
+      [duelId]="duelId()"
+      [playerId]="playerTwoId()"
+      [playerNickName]="playerTwoNickName()"
+      (playerLifePointsChanged)="playerTwoLP.set($event)"
+      (playerFinished)="playerFinished($event)"
+    />
+    <!-- JUGADOR 1 -->
+    <app-player-life-points
+      [duelId]="duelId()"
+      [playerId]="playerOneId()"
+      [playerNickName]="playerOneNickName()"
+      (playerLifePointsChanged)="playerOneLP.set($event)"
+      (playerFinished)="playerFinished($event)"
+    />
+  }
+</div>

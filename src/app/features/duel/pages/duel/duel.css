@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    background: #101010;
+    font-family: var(--font-type);
+}
+
+p {
+    color: var(--color-type-red);
+}
