@@ -6,10 +6,11 @@ import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { DuelOptions } from '../../components/duel-options/duel-options';
 
 @Component({
   selector: 'app-duel',
-  imports: [PlayerLifePoints, ToastModule, MessageModule, FormsModule],
+  imports: [PlayerLifePoints, ToastModule, MessageModule, FormsModule, DuelOptions],
   templateUrl: './duel.html',
   styleUrl: './duel.css',
   providers: [MessageService]

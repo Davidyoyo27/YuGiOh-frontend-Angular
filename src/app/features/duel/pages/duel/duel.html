@@ -11,6 +11,7 @@
       (playerLifePointsChanged)="playerTwoLP.set($event)"
       (playerFinished)="playerFinished($event)"
     />
+    <app-duel-options [duelId]="duelId()" />
     <!-- JUGADOR 1 -->
     <app-player-life-points
       [duelId]="duelId()"

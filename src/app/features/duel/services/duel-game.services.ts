@@ -45,4 +45,11 @@ export class DuelGameService {
         );
     }
 
+    cancelDuel(id: number, cancelReason: string) {
+        return this.http.post<StandardResponse>(`${environment.baseURL}/user-duel-game/${id}/cancel-duel`,
+            { cancelReason },
+            { withCredentials: true }
+        );
+    }
+
 }
