@@ -1,0 +1,31 @@
+<div>
+  <p-toast />
+  <p-dialog
+    [(visible)]="visible"
+    [draggable]="true"
+    [modal]="true"
+    header="Cancelación del duelo"
+    [style]="{ width: '24rem' }"
+    styleClass="cancel-duel-dialog"
+  >
+    <div class="cancel-duel-content">
+      <p class="text-sm text-surface-500 dark:text-surface-400 mt-0 mb-0">
+        Indica el motivo por el que será cancelado el duelo.
+      </p>
+      <textarea
+        pTextarea
+        [(ngModel)]="cancelReason"
+        class="cancel-duel-textarea"
+        placeholder="Describe el motivo..."
+      ></textarea>
+    </div>
+    <ng-template #footer>
+      <div class="cancel-duel-actions">
+        <button type="button" class="btn-cancel-back" (click)="visible.set(false)">Volver</button>
+        <button type="button" class="btn-confirm-cancel" (click)="cancelDuel()">
+          Cancelar duelo
+        </button>
+      </div>
+    </ng-template>
+  </p-dialog>
+</div>

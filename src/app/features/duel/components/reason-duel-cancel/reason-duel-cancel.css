@@ -1,0 +1,82 @@
+.cancel-duel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cancel-duel-description {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.cancel-duel-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.75rem;
+    resize: vertical;
+    border: 1px solid #5c502e;
+    border-radius: 6px;
+    background: #181818;
+    color: #f5f5f5;
+    font: inherit;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cancel-duel-textarea::placeholder {
+    color: #858585;
+}
+
+.cancel-duel-textarea:focus {
+    outline: none;
+    border-color: #d6b85a;
+    box-shadow: 0 0 0 2px rgb(214 184 90 / 15%);
+}
+
+.cancel-duel-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.btn-cancel-back,
+.btn-confirm-cancel {
+    padding: 0.65rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-cancel-back {
+    background: #292929;
+    border-color: #454545;
+    color: #e0e0e0;
+}
+
+.btn-cancel-back:hover {
+    background: #383838;
+}
+
+.btn-confirm-cancel {
+    background: #8f2929;
+    border-color: #a83a3a;
+    color: #fff;
+}
+
+.btn-confirm-cancel:hover {
+    background: #b73535;
+    border-color: #d34b4b;
+}
+
+.btn-cancel-back:focus-visible,
+.btn-confirm-cancel:focus-visible {
+    outline: 2px solid #d6b85a;
+    outline-offset: 2px;
+}

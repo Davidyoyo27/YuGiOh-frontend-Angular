@@ -1,0 +1,15 @@
+<i class="pi pi-spin pi-cog" (click)="showDialog()"> </i>
+<p-dialog
+  header="Opciones del duelo"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem' }"
+  [breakpoints]="{ '1199px': '25rem', '575px': '25rem' }"
+>
+  <div class="dialog-buttons">
+    <button (click)="showDialogCancelReason()">Cancelar Duelo</button>
+    <button>Abandonar Duelo</button>
+  </div>
+</p-dialog>
+
+<app-reason-duel-cancel [(visible)]="visibleCancelReason" [duelId]="duelId()" />
