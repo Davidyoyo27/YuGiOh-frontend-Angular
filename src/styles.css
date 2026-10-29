@@ -25,6 +25,7 @@
 
   /* colors types */
   --color-type-red: rgb(220, 17, 17);
+  --color-type-blue: rgb(0, 195, 255);
 
   /* colors border */
   --color-border-primary: #545454;

@@ -5,6 +5,8 @@ import { StandardResponse } from "../../auth/interfaces/standard-response.interf
 import { DuelRoom } from "../interfaces/duel-room-interface";
 import { JoinDuelResponse } from "../interfaces/join-duel-interface";
 import { DataDuel } from "../interfaces/data-duel.interface";
+import { CanceledDuel } from "../interfaces/canceled-duels.interface";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class DuelGameService {
@@ -48,6 +50,19 @@ export class DuelGameService {
     cancelDuel(id: number, cancelReason: string) {
         return this.http.post<StandardResponse>(`${environment.baseURL}/user-duel-game/${id}/cancel-duel`,
             { cancelReason },
+            { withCredentials: true }
+        );
+    }
+
+    canceledDuels(): Observable<CanceledDuel[]> {
+        return this.http.get<CanceledDuel[]>(`${environment.baseURL}/duel-game/canceled-duels`,
+            { withCredentials: true }
+        );
+    }
+
+    confirmationCancelDuel(id: number, confirmationCanceledDuel: boolean) {
+        return this.http.post<StandardResponse>(`${environment.baseURL}/duel-game/confirmation-canceled-duels/${id}`,
+            { confirmationCanceledDuel },
             { withCredentials: true }
         );
     }

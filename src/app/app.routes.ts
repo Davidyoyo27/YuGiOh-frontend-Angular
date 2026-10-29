@@ -89,6 +89,10 @@ export const routes: Routes = [
                 path: 'menu-options-duel/duel/:id',
                 loadComponent: () => import('./features/duel/pages/duel/duel'),
             },
+            {
+                path: 'menu-options-duel/canceled-duels',
+                loadComponent: () => import('./features/duel/pages/canceled-duels-page/canceled-duels-page'),
+            },
         ]
     },
     {

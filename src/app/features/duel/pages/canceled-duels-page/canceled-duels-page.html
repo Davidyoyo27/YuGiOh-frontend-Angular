@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <p-confirmdialog />
+  <p-confirmdialog key="firstConfirmation" />
+  <p-confirmdialog key="secondConfirmation" />
+  <p-toast />
+  <div class="cancelled-page">
+    <header class="page-header">
+      <div class="page-title">
+        <h2>Duelos Cancelados</h2>
+        <p>Revisa los duelos que han sido cancelados o están en proceso de cancelación.</p>
+      </div>
+    </header>
+
+    @if (errorData()) {
+      <p>{{ errorData() }}</p>
+    } @else {
+      <section class="duels-grid">
+        @for (duels of dataDuelsCanceled(); track duels.id) {
+          <!-- Duelo en proceso -->
+          <article class="duel-card in-progress">
+            <div class="card-top">
+              <span class="status">
+                <span class="status-icon">✖</span>
+                En proceso...
+              </span>
+              <time>{{ duels.cancellationRequestedAt }}</time>
+            </div>
+
+            <h3>TCG</h3>
+            <p class="duel-type">1vs1</p>
+            <p class="cancel-reason">{{ duels.cancelReason }}</p>
+
+            <p class="card-message">
+              <span class="message-icon">◷</span>
+              Cancelación en proceso...
+            </p>
+            <div class="cont-buttons">
+              <button pButton (click)="confirm($event, duels.id)">Confirmar cancelación</button>
+              <button
+                pButton
+                (click)="refuse($event, duels.id)"
+                severity="danger"
+                class="button-reverse-v2"
+              >
+                Rechazar
+              </button>
+            </div>
+          </article>
+        }
+      </section>
+    }
+  </div>
+</div>
