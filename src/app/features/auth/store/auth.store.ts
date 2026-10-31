@@ -34,6 +34,8 @@ export class AuthStore {
             isAuthenticated: false,
             isCheckingAuth: false
         }));
+
+        this.defaultAvatar.set('');
     }
 
     setCheckingAuth(value: boolean): void {
