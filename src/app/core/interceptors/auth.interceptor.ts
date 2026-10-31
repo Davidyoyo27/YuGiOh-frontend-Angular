@@ -22,31 +22,49 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         '/auth/refresh',
     ];
 
+    const isAuthEndpoint = authUrls.some(url => req.url.includes(url));
+
     return next(req).pipe(
 
         catchError((error: HttpErrorResponse) => {
 
-            const isAuthEndpoint = authUrls.some(url =>
-                req.url.includes(url)
-            );
-
-            if (error.status === 401 && !isAuthEndpoint) {
-                
-                return authService.refresh().pipe(
-
-                    switchMap(() => {
-                        return next(req);
-                    }),
-
-                    catchError(() => {
-                        authStore.clearAuth();
-                        router.navigate(['/login']);
-                        return throwError(() => error);
-                    })
-                );
+            // Solo intentamos renovar ante un 401
+            if (error.status !== 401 || isAuthEndpoint) {
+                return throwError(() => error);
             }
 
-            return throwError(() => error);
+            return authService.refresh().pipe(
+
+                // 1. Si falla la renovación, la sesión ya no puede recuperarse
+                catchError((refreshError: HttpErrorResponse) => {
+
+                    if (refreshError.status === 401 || refreshError.status === 403) {
+                        authStore.clearAuth();
+                        router.navigate(['/login']);
+                    }
+
+                    return throwError(() => refreshError);
+                }),
+
+                // 2. Si la renovación funciona, reintentamos la petición original
+                switchMap(() => {
+                    return next(req).pipe(
+
+                        // 3. Solo cerramos la sesión si el reintento vuelve a dar 401.
+                        catchError((retryError: HttpErrorResponse) => {
+
+                            if (retryError.status === 401) {
+                                authStore.clearAuth();
+                                router.navigate(['/login']);
+                            }
+
+                            return throwError(() => retryError);
+                        })
+
+                    );
+                }),
+            );
+
         })
 
     );

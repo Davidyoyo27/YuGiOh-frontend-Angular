@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../../environments/environment";
 import { LoginResponse } from "../interfaces/auth-login.interface";
@@ -68,9 +68,21 @@ export class AuthService {
                         this.authStore.setDefaultAvatar(avatar.url);
                     }),
 
-                    map(() => true)
+                    map(() => true),
+
+                    // Si falla la obtención del avatar, mantenemos la sesión.
+                    catchError((error: HttpErrorResponse) => {
+                        if(error.status === 401){
+                            this.authStore.clearAuth();
+                            return of(false);
+                        }
+
+                        // Un error 403, 500 o de conexión no invalida la sesión.
+                        return of(true);
+                    })
                 );
             }),
+            // Este catchError corresponde a la comprobación de autenticación.
             catchError(() => {
                 this.authStore.clearAuth();
                 return of(false);
