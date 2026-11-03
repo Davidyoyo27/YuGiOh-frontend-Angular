@@ -9,12 +9,14 @@ export class AuthStore {
         isAuthenticated: false,
         // si es true "todavia no se si el usuario esta autenticado o no."
         isCheckingAuth: true,
+        isInitialized: false,
     });
     defaultAvatar = signal<string>('');
 
     public user = computed(() => this.state().user);
     public isAuthenticated = computed(() => this.state().isAuthenticated);
     public isCheckingAuth = computed(() => this.state().isCheckingAuth);
+    public isInitialized = computed(() => this.state().isInitialized);
 
     playerAvatar = computed(() => this.user()?.avatarUrl ?? this.defaultAvatar());
 
@@ -47,6 +49,13 @@ export class AuthStore {
 
     setDefaultAvatar(url: string): void {
         this.defaultAvatar.set(url);
+    }
+
+    setInitialized(value: boolean): void {
+        this.state.update(state => ({
+            ...state,
+            isInitialized: value,
+        }));
     }
 
 }

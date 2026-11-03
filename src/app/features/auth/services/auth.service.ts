@@ -89,6 +89,7 @@ export class AuthService {
             }),
             finalize(() => {
                 this.authStore.setCheckingAuth(false);
+                this.authStore.setInitialized(true);
             })
         );
     }

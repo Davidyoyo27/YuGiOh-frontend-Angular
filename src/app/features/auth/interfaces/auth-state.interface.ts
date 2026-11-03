@@ -4,4 +4,5 @@ export interface AuthState {
     user: User | null;
     isAuthenticated: boolean;
     isCheckingAuth: boolean;
+    isInitialized: boolean;
 }
