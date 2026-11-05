@@ -19,7 +19,7 @@ export class Sidebar {
       label: 'Inicio',
       icon: 'pi pi-home',
       route: '/home',
-      roles: [2],
+      roles: [2, 3],
     },
     {
       label: 'Perfil',
@@ -46,9 +46,9 @@ export class Sidebar {
       roles: [2],
     },
     {
-      label: 'Administración',
-      icon: 'fa-solid fa-gears',
-      route: '/admin',
+      label: 'Duelistas',
+      icon: 'pi pi-users',
+      route: '/admin-users-duelists',
       roles: [3],
     },
   ];
@@ -56,6 +56,9 @@ export class Sidebar {
   // signals
   isCollapsed = signal<boolean>(false);
   isInitialized = signal(false);
+
+  isPlayer = computed(() => this.authStore.user()?.role?.id === 2);
+  isAdmin = computed(() => this.authStore.user()?.role?.id === 3);
 
   menu = computed(() => {
     const roleId = this.authStore.user()?.role?.id;

@@ -1,4 +1,8 @@
-<aside [class.collapsed]="isCollapsed()">
+<aside
+  [class.collapsed]="isCollapsed()"
+  [class.player-menu]="isPlayer()"
+  [class.admin-menu]="isAdmin()"
+>
   <div class="cont-image">
     @if (isCollapsed()) {
       <img
