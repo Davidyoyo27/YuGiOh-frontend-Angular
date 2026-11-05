@@ -93,6 +93,10 @@ export const routes: Routes = [
                 path: 'menu-options-duel/canceled-duels',
                 loadComponent: () => import('./features/duel/pages/canceled-duels-page/canceled-duels-page'),
             },
+            {
+                path: 'admin-users-duelists',
+                loadComponent: () => import('./features/admin/pages/users-duelists-page/users-duelists-page'),
+            },
         ]
     },
     {

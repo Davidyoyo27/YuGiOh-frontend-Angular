@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { PlayerStatistics } from '../../interfaces/player-statistics.interface';
 import { PlayerStatisticsCard } from "../../components/player-statistics-card/player-statistics-card";
 import { PlayerLastsDuels } from '../../components/player-lasts-duels/player-lasts-duels';
+import { AuthStore } from '../../../auth/store/auth.store';
 
 @Component({
   selector: 'app-home-page',
@@ -13,11 +14,15 @@ import { PlayerLastsDuels } from '../../components/player-lasts-duels/player-las
 export default class HomePage implements OnInit {
   // injects
   homeService = inject(HomeService);
+  authStore = inject(AuthStore);
 
   // signals
   playerStatistics = signal<PlayerStatistics | null>(null);
   errorData = signal<string>('');
   titleWelcome = signal<string>('');
+  titleWelcomeAdmin = signal<string>('¡Bienvenido, Administrador');
+
+  isAdmin = computed(() => this.authStore.user()?.role?.id === 3);
 
   ngOnInit(): void {
     this.loadStatistics();
