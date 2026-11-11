@@ -30,4 +30,11 @@ export class AdminService {
         );
     }
 
+    unlockUserAccount(id: string, isActive: boolean) {
+        return this.http.patch<StandardResponse>(`${environment.baseURL}/admin/administrator/unlock-user-account/${id}`,
+            { isActive },
+            { withCredentials: true }
+        );
+    }
+
 }
