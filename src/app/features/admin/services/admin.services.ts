@@ -23,4 +23,11 @@ export class AdminService {
         );
     }
 
+    blockUserAccount(id: string, isActive: boolean) {
+        return this.http.patch<StandardResponse>(`${environment.baseURL}/admin/administrator/block-user-account/${id}`,
+            { isActive },
+            { withCredentials: true }
+        );
+    }
+
 }
