@@ -86,6 +86,17 @@
       >
         Bloquear usuario
       </button>
+      <button
+        class="button-option"
+        type="button"
+        pButton
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="op.hide(); unlockUserAccount()"
+      >
+        Desbloquear usuario
+      </button>
     </div>
   </p-popover>
 </div>
