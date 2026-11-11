@@ -6,10 +6,13 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AdminService } from '../../services/admin.services';
 import { UserAccount } from '../../interfaces/users-account.interface';
+import { Popover, PopoverModule } from 'primeng/popover';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-users-duelists-page',
-  imports: [FormsModule, TableModule, MessageModule, ToastModule],
+  imports: [FormsModule, TableModule, MessageModule, ToastModule, PopoverModule, ButtonModule, InputTextModule],
   templateUrl: './users-duelists-page.html',
   styleUrl: './users-duelists-page.css',
   providers: [MessageService]
@@ -17,13 +20,19 @@ import { UserAccount } from '../../interfaces/users-account.interface';
 export default class UsersDuelistsPage implements OnInit {
   // injects
   adminService = inject(AdminService);
+  messageService = inject(MessageService);
 
   // signals
   users = signal<UserAccount[]>([]);
-  selectedUser = signal<UserAccount | null>(null);
+  selectedUser: UserAccount | null = null;
 
   ngOnInit(): void {
     this.userDuelists();
+  }
+
+  showOptions(event: Event, user: UserAccount, popover: Popover): void {
+    this.selectedUser = user;
+    popover.toggle(event);
   }
 
   userDuelists(): void {
@@ -32,6 +41,29 @@ export default class UsersDuelistsPage implements OnInit {
         this.users.set(resp);
       },
       error: () => {
+      },
+    });
+  }
+
+  sendActivationEmail(): void {
+    if (!this.selectedUser) return;
+
+    const userId = this.selectedUser.id;
+
+    this.adminService.resendEmailActivationAccount(userId).subscribe({
+      next: (resp) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: resp.message,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error.message
+        });
       },
     });
   }
