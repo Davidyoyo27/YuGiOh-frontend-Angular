@@ -68,4 +68,28 @@ export default class UsersDuelistsPage implements OnInit {
     });
   }
 
+  blockUserAccount(): void {
+    if (!this.selectedUser) return;
+
+    const userId = this.selectedUser.id;
+    const userIsActive = this.selectedUser.isActive;
+
+    this.adminService.blockUserAccount(userId, userIsActive).subscribe({
+      next: (resp) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: resp.message,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error.message
+        });
+      },
+    });
+  }
+
 }

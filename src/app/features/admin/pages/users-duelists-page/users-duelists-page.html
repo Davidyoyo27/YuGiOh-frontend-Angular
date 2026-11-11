@@ -75,6 +75,17 @@
       >
         Enviar email de activación de cuenta
       </button>
+      <button
+        class="button-option"
+        type="button"
+        pButton
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="op.hide(); blockUserAccount()"
+      >
+        Bloquear usuario
+      </button>
     </div>
   </p-popover>
 </div>
