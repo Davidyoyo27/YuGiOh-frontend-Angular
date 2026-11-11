@@ -21,7 +21,7 @@
       [paginator]="true"
       [rows]="10"
       [rowsPerPageOptions]="[10, 20, 50]"
-      [globalFilterFields]="['name']"
+      [globalFilterFields]="['name','email']"
       selectionMode="single"
       [(selection)]="selectedUser"
       dataKey="id"
@@ -45,10 +45,36 @@
           <td>{{ user.isActive ? 'Si' : 'No' }}</td>
           <td>{{ user.typeUser?.typeName }}</td>
           <td>
-            <button>Acción</button>
+            <button
+              type="button"
+              pButton
+              severity="secondary"
+              variant="outlined"
+              (click)="showOptions($event, user, op)"
+            >
+              Ver opciones
+            </button>
           </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
+</div>
+<!-- OPCIONES -->
+<div>
+  <p-popover #op>
+    <div class="buttons-options">
+      <button
+        class="button-option"
+        type="button"
+        pButton
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="op.hide(); sendActivationEmail()"
+      >
+        Enviar email de activación de cuenta
+      </button>
+    </div>
+  </p-popover>
 </div>
