@@ -97,6 +97,10 @@ export const routes: Routes = [
                 path: 'admin-users-duelists',
                 loadComponent: () => import('./features/admin/pages/users-duelists-page/users-duelists-page'),
             },
+            {
+                path: 'superadmin-users-list',
+                loadComponent: () => import('./features/superadmin/pages/users-list-page/users-list-page'),
+            },
         ]
     },
     {

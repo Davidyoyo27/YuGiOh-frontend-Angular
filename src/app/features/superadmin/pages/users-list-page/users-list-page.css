@@ -1,0 +1,178 @@
+p {
+    color: var(--color-text-second);
+}
+
+h1 {
+    color: var(--color-title-first);
+}
+
+.wrapper {
+    font-family: var(--font-type);
+}
+
+.cont-text {
+    margin-left: 2rem;
+}
+
+.cont-text h1 {
+    margin-bottom: 1rem;
+}
+
+.table-container {
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.table-header input {
+    width: 100%;
+    max-width: 350px;
+}
+
+.table-header p-select {
+    width: 260px;
+}
+
+
+input {
+    padding: .5rem;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #ffff;
+    border-radius: .2rem;
+    color: #ffff;
+}
+
+input::placeholder {
+    color: #ffff;
+}
+
+button {
+    padding: .5rem;
+    color: var(--color-title-first);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border: 1px solid var(--color-title-first);
+    border-radius: .3rem;
+    font-family: var(--font-type);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.buttons-options {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.button-option {
+    color: #000000;
+}
+
+
+/* SELECT */
+.table-header p-select {
+    width: 260px;
+}
+
+/* Contenedor principal */
+:host ::ng-deep .p-select {
+    background: linear-gradient(145deg, #202b3d, #172131);
+    border: 1px solid rgba(212, 177, 90, 0.35);
+    border-radius: 8px;
+    color: #e8e5dc;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Texto seleccionado */
+:host ::ng-deep .p-select-label {
+    color: #e8e5dc;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Placeholder */
+:host ::ng-deep .p-select-label.p-placeholder {
+    color: #929bad;
+}
+
+/* Flecha */
+:host ::ng-deep .p-select-dropdown {
+    color: #d4b15a;
+    width: 2.8rem;
+}
+
+/* Hover */
+:host ::ng-deep .p-select:not(.p-disabled):hover {
+    border-color: rgba(212, 177, 90, 0.75);
+}
+
+/* Focus */
+:host ::ng-deep .p-select:not(.p-disabled).p-focus {
+    border-color: #d4b15a;
+    box-shadow: 0 0 0 2px rgba(212, 177, 90, 0.12),
+                0 0 12px rgba(212, 177, 90, 0.12);
+}
+
+/* Panel desplegable */
+:host ::ng-deep .p-select-overlay {
+    background: #172131;
+    border: 1px solid rgba(212, 177, 90, 0.35);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+/* Opciones */
+:host ::ng-deep .p-select-option {
+    color: #d7dce5;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover de opciones */
+:host ::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled):hover {
+    background: rgba(212, 177, 90, 0.10);
+    color: #f0d28a;
+}
+
+/* Opción seleccionada */
+:host ::ng-deep .p-select-option.p-select-option-selected {
+    background: rgba(212, 177, 90, 0.16);
+    color: #f0d28a;
+    font-weight: 600;
+}
+
+/* Hover sobre opción seleccionada */
+:host ::ng-deep .p-select-option.p-select-option-selected:not(.p-disabled):hover {
+    background: rgba(212, 177, 90, 0.22);
+}
+
+/* Check de selección */
+:host ::ng-deep .p-select-option-selected .p-select-option-check-icon {
+    color: #d4b15a;
+}
+
+
+@media (max-width: 650px) {
+    .table-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-header input,
+    .table-header p-select {
+        max-width: none;
+        width: 100%;
+    }
+}

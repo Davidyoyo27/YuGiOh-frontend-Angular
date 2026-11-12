@@ -54,7 +54,7 @@ export class Sidebar {
     {
       label: 'Usuarios',
       icon: 'pi pi-users',
-      route: '/admin',
+      route: '/superadmin-users-list',
       roles: [4],
     },
   ];
