@@ -21,8 +21,10 @@ export default class HomePage implements OnInit {
   errorData = signal<string>('');
   titleWelcome = signal<string>('');
   titleWelcomeAdmin = signal<string>('¡Bienvenido, Administrador');
+  titleWelcomeSuperAdmin = signal<string>('¡Bienvenido, Super Admin');
 
   isAdmin = computed(() => this.authStore.user()?.role?.id === 3);
+  isSuperAdmin = computed(() => this.authStore.user()?.role?.id === 4);
 
   ngOnInit(): void {
     this.loadStatistics();

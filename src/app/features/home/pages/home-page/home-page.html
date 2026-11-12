@@ -1,7 +1,9 @@
 <main>
   @if (isAdmin()) {
     <h1>{{ titleWelcomeAdmin() }} {{ authStore.user()?.userName }}</h1>
-  } @else {
+  } @else if (isSuperAdmin()) {
+    <h1>{{ titleWelcomeSuperAdmin() }} {{ authStore.user()?.userName }}</h1>
+  }@else {
     <h1>{{ titleWelcome() }}</h1>
     <p>Resumen general de tu actividad</p>
     <div class="container-primary-stats-player">
@@ -40,4 +42,4 @@
       </div>
     </div>
   }
-</main>
+  </main>

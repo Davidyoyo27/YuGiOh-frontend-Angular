@@ -31,6 +31,14 @@ aside.admin-menu {
     --menu-background: #201855;
 }
 
+/* tema superadministrador */
+
+.superadmin-menu {
+    --menu-accent: #e31616;
+    --menu-accent-rgb: 227, 5, 5;
+    --menu-background: #571919;
+}
+
 /* imagen / logo */
 
 .cont-image {
@@ -116,11 +124,9 @@ span {
     color: var(--menu-accent);
     border: 1px solid rgba(var(--menu-accent-rgb), .45);
     background:
-        linear-gradient(
-            to bottom,
+        linear-gradient(to bottom,
             rgba(var(--menu-accent-rgb), .10),
-            rgba(var(--menu-accent-rgb), .03)
-        );
+            rgba(var(--menu-accent-rgb), .03));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, .08),
         inset 0 0 20px rgba(var(--menu-accent-rgb), .12),
@@ -136,12 +142,10 @@ span {
     height: 1px;
     opacity: 0;
     background:
-        linear-gradient(
-            to right,
+        linear-gradient(to right,
             transparent,
             rgba(var(--menu-accent-rgb), .6),
-            transparent
-        );
+            transparent);
     transition: .3s;
 }
 
@@ -154,8 +158,7 @@ span {
 .menu-item.active i {
     color: var(--menu-accent);
     filter:
-        drop-shadow(0 0 2px rgba(var(--menu-accent-rgb), .7))
-        drop-shadow(0 0 5px rgba(var(--menu-accent-rgb), .4));
+        drop-shadow(0 0 2px rgba(var(--menu-accent-rgb), .7)) drop-shadow(0 0 5px rgba(var(--menu-accent-rgb), .4));
 }
 
 .menu-item:hover .menu-text,
@@ -167,12 +170,10 @@ span {
 
 .menu-item:hover {
     background:
-        radial-gradient(
-            ellipse at center,
+        radial-gradient(ellipse at center,
             rgba(var(--menu-accent-rgb), .20) 0%,
             rgba(var(--menu-accent-rgb), .08) 60%,
-            transparent 100%
-        );
+            transparent 100%);
     border: 1px solid rgba(var(--menu-accent-rgb), .35);
 }
 
@@ -205,11 +206,9 @@ button.menu-item:hover,
 button.menu-item.active {
     border-color: rgba(220, 70, 70, .35);
     background:
-        linear-gradient(
-            to bottom,
+        linear-gradient(to bottom,
             rgba(220, 70, 70, .10),
-            rgba(220, 70, 70, .03)
-        );
+            rgba(220, 70, 70, .03));
     box-shadow:
         inset 0 0 15px rgba(220, 70, 70, .08);
 }
