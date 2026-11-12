@@ -1,0 +1,66 @@
+<div class="wrapper">
+  <p-toast />
+  <div class="cont-text">
+    <h1>Administración de Usuarios</h1>
+    <p>Encuentra al usuario que desees en el sistema.</p>
+  </div>
+  <div class="table-container">
+    <div class="table-header">
+      <input
+        #searchInput
+        type="text"
+        placeholder="Buscar usuario..."
+        (input)="table.filterGlobal(searchInput.value, 'contains')"
+      />
+
+      <p-select
+        [options]="userTypes"
+        [(ngModel)]="selectedUserType"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Filtrar por tipo de usuario"
+        (onChange)="filterUsers()"
+        [showClear]="true"
+      />
+    </div>
+
+    <p-table
+      class="dark-table"
+      #table
+      [value]="filteredUsers()"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 20, 50]"
+      [globalFilterFields]="['name', 'email']"
+      selectionMode="single"
+      [(selection)]="selectedUser"
+      dataKey="id"
+    >
+      <ng-template #header>
+        <tr>
+          <th>Correo</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Activo</th>
+          <th>Tipo Usuario</th>
+          <th>Acción</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-user>
+        <tr [pSelectableRow]="user">
+          <td>{{ user.email }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.isActive ? 'Si' : 'No' }}</td>
+          <td>{{ user.typeUser?.typeName }}</td>
+          <td>
+            <button type="button" pButton severity="secondary" variant="outlined">
+              Ver opciones
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
