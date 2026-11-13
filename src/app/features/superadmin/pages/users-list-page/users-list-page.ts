@@ -91,4 +91,28 @@ export default class UsersListPage implements OnInit {
     });
   }
 
+  unlockUserAccount(): void {
+    if (!this.selectedUser) return;
+
+    const userId = this.selectedUser.id;
+    const userIsActive = this.selectedUser.isActive;
+
+    this.superAdminService.unlockUserAccount(userId, userIsActive).subscribe({
+      next: (resp) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: resp.message,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error.message
+        });
+      },
+    });
+  }
+
 }
