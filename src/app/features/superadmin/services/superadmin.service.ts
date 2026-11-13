@@ -23,4 +23,11 @@ export class SuperAdminService {
         );
     }
 
+    unlockUserAccount(id: string, isActive: boolean) {
+        return this.http.patch<StandardResponse>(`${environment.baseURL}/superadmin/superadministrator/unlock-user-account/${id}`,
+            { isActive },
+            { withCredentials: true }
+        );
+    }
+
 }
