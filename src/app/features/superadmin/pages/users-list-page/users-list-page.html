@@ -55,7 +55,13 @@
           <td>{{ user.isActive ? 'Si' : 'No' }}</td>
           <td>{{ user.typeUser?.typeName }}</td>
           <td>
-            <button type="button" pButton severity="secondary" variant="outlined">
+            <button
+              type="button"
+              pButton
+              severity="secondary"
+              variant="outlined"
+              (click)="showOptions($event, user, op)"
+            >
               Ver opciones
             </button>
           </td>
@@ -63,4 +69,22 @@
       </ng-template>
     </p-table>
   </div>
+</div>
+<!-- OPCIONES -->
+<div>
+  <p-popover #op>
+    <div class="buttons-options">
+      <button
+        class="button-option"
+        type="button"
+        pButton
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="op.hide(); blockUserAccount()"
+      >
+        Bloquear usuario
+      </button>
+    </div>
+  </p-popover>
 </div>

@@ -7,10 +7,12 @@ import { MessageService } from 'primeng/api';
 import { UserAccount } from '../../../admin/interfaces/users-account.interface';
 import { SuperAdminService } from '../../services/superadmin.service';
 import { SelectModule } from 'primeng/select';
+import { Popover, PopoverModule } from 'primeng/popover';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-users-list-page',
-  imports: [FormsModule, TableModule, MessageModule, ToastModule, SelectModule],
+  imports: [FormsModule, TableModule, MessageModule, ToastModule, SelectModule, PopoverModule, ButtonModule],
   templateUrl: './users-list-page.html',
   styleUrl: './users-list-page.css',
   providers: [MessageService]
@@ -36,6 +38,11 @@ export default class UsersListPage implements OnInit {
     this.userList();
   }
 
+  showOptions(event: Event, user: UserAccount, popover: Popover): void {
+    this.selectedUser = user;
+    popover.toggle(event);
+  }
+
   userList(): void {
     this.superAdminService.usersList().subscribe({
       next: (resp) => {
@@ -58,6 +65,30 @@ export default class UsersListPage implements OnInit {
     this.filteredUsers.set(
       users.filter(user => user.typeUser?.id === this.selectedUserType)
     );
+  }
+
+  blockUserAccount(): void {
+    if (!this.selectedUser) return;
+
+    const userId = this.selectedUser.id;
+    const userIsActive = this.selectedUser.isActive;
+
+    this.superAdminService.blockUserAccount(userId, userIsActive).subscribe({
+      next: (resp) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: resp.message,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error.message
+        });
+      },
+    });
   }
 
 }
