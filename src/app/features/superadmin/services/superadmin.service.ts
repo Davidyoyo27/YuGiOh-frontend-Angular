@@ -30,4 +30,11 @@ export class SuperAdminService {
         );
     }
 
+    finishUserActiveSession(id: string) {
+        return this.http.patch<StandardResponse>(`${environment.baseURL}/superadmin/superadministrator/finish-user-session/${id}`,
+            { id },
+            { withCredentials: true }
+        );
+    }
+
 }

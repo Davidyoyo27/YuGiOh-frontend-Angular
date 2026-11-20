@@ -96,6 +96,17 @@
       >
         Desbloquear usuario
       </button>
+      <button
+        class="button-option"
+        type="button"
+        pButton
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="op.hide(); finishUserActiveSession()"
+      >
+      Terminar sesión de usuario        
+      </button>
     </div>
   </p-popover>
 </div>
