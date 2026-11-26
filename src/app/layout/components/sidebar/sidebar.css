@@ -78,6 +78,7 @@ aside.collapsed {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-top: .5rem;
 }
 
 .menu-content nav {
@@ -247,7 +248,7 @@ button.menu-item.active {
         left: auto;
         z-index: 4;
         width: 5rem;
-        height: 19rem;
+        height: 19.5rem;
         border: 1px solid rgba(var(--menu-accent-rgb), .2);
         border-radius: 1rem;
         background: rgba(15, 20, 30, .65);
