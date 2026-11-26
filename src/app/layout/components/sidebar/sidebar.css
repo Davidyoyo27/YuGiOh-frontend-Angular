@@ -4,18 +4,20 @@ aside {
     --menu-background: var(--secondary-color);
     --menu-text: var(--color-text);
 
-    background-color: var(--menu-background);
-    color: var(--menu-text);
     position: sticky;
     top: 0;
+    display: flex;
+    flex-direction: column;
     width: 15rem;
-    height: 100vh;
-    transition: width .3s ease, background-color .3s ease;
+    height: 100%;
+    background-color: var(--menu-background);
+    color: var(--menu-text);
     font-family: var(--font-type);
     overflow: hidden;
+    transition: width .3s ease, background-color .3s ease;
 }
 
-/* tema jugador */
+/* TEMAS */
 
 aside.player-menu {
     --menu-accent: #f0d28a;
@@ -23,26 +25,23 @@ aside.player-menu {
     --menu-background: var(--secondary-color);
 }
 
-/* tema administrador */
-
 aside.admin-menu {
     --menu-accent: #c4b5fd;
     --menu-accent-rgb: 167, 139, 250;
     --menu-background: #201855;
 }
 
-/* tema superadministrador */
-
-.superadmin-menu {
+aside.superadmin-menu {
     --menu-accent: #e31616;
     --menu-accent-rgb: 227, 5, 5;
     --menu-background: #571919;
 }
 
-/* imagen / logo */
+/* LOGO */
 
 .cont-image {
-    text-align: center;
+    position: relative;
+    flex-shrink: 0;
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -56,6 +55,7 @@ aside.admin-menu {
 
 .pyramid {
     width: 12rem;
+    max-width: 100%;
 }
 
 img {
@@ -66,13 +66,25 @@ img:hover {
     cursor: pointer;
 }
 
-/* sidebar colapsado */
+/* SIDEBAR COLAPSADO */
 
-.collapsed {
-    width: 70px;
+aside.collapsed {
+    width: 5rem;
 }
 
-/* iconos y textos */
+/* CONTENIDO DEL MENU */
+
+.menu-content {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.menu-content nav {
+    padding: 0 .4rem;
+}
+
+/* ICONOS Y TEXTOS */
 
 i {
     font-size: 1.2rem;
@@ -117,7 +129,7 @@ span {
     overflow: hidden;
 }
 
-/* hover y opcion activa */
+/* HOVER Y OPCION ACTIVA */
 
 .menu-item:hover,
 .menu-item.active {
@@ -166,8 +178,6 @@ span {
     color: var(--menu-accent);
 }
 
-/* efecto hover */
-
 .menu-item:hover {
     background:
         radial-gradient(ellipse at center,
@@ -177,19 +187,13 @@ span {
     border: 1px solid rgba(var(--menu-accent-rgb), .35);
 }
 
-/* boton cerrar sesion */
+/* CERRAR SESION */
 
 button.menu-item {
     width: 100%;
     background-color: transparent;
     cursor: pointer;
 }
-
-button .menu-text {
-    font-size: 1rem;
-}
-
-/* Mantener el color rojo de cerrar sesión */
 
 button.menu-item i,
 button.menu-item .menu-text {
@@ -211,4 +215,97 @@ button.menu-item.active {
             rgba(220, 70, 70, .03));
     box-shadow:
         inset 0 0 15px rgba(220, 70, 70, .08);
+}
+
+/* BOTONES EXCLUSIVOS DE MOBILE */
+
+.mobile-menu-trigger,
+.mobile-close {
+    display: none;
+}
+
+/* FONDO OSCURO MOBILE */
+
+.mobile-backdrop {
+    display: none;
+}
+
+/* BOTÓN MOBILE */
+
+.sidebar-toggle {
+    display: none;
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 768px) {
+    aside {
+        position: fixed;
+        top: 7rem;
+        bottom: 1rem;
+        right: 0rem;
+        left: auto;
+        z-index: 4;
+        width: 5rem;
+        height: 19rem;
+        border: 1px solid rgba(var(--menu-accent-rgb), .2);
+        border-radius: 1rem;
+        background: rgba(15, 20, 30, .65);
+    }
+
+    aside.collapsed {
+        width: 5rem;
+    }
+
+    aside:not(.collapsed) {
+        width: min(12rem, calc(100vw - 24px));
+    }
+
+    .sidebar-toggle {
+        position: fixed;
+        top: 4rem;
+        right: -1rem;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.2rem;
+        height: 3.2rem;
+        border: 1px solid rgba(var(--menu-accent-rgb), .5);
+        border-radius: 50%;
+        background: rgba(15, 20, 30, .9);
+        color: var(--menu-accent);
+        box-shadow:
+            0 0 10px rgba(var(--menu-accent-rgb), .15),
+            inset 0 0 10px rgba(var(--menu-accent-rgb), .08);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+    .sidebar-toggle i {
+        font-size: 1.3rem;
+        color: var(--menu-accent);
+        transition: transform .3s ease;
+    }
+
+    .sidebar-toggle:active {
+        transform: scale(.9);
+    }
+
+    .sidebar-toggle:hover {
+        border-color: var(--menu-accent);
+        box-shadow:
+            0 0 15px rgba(var(--menu-accent-rgb), .3),
+            inset 0 0 12px rgba(var(--menu-accent-rgb), .12);
+    }
+
+    .cont-image {
+        display: none;
+    }
+
+    aside:not(.collapsed) .menu-item {
+        justify-content: flex-start;
+        padding: .9rem 1rem;
+    }
 }
