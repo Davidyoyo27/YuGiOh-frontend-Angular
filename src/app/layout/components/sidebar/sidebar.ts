@@ -1,8 +1,9 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive, NavigationEnd } from "@angular/router";
 import { AuthStore } from '../../../features/auth/store/auth.store';
 import { MenuOption } from '../../interfaces/menu-option.interface';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,9 +11,10 @@ import { MenuOption } from '../../interfaces/menu-option.interface';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
-export class Sidebar {
+export class Sidebar implements OnInit {
   authService = inject(AuthService);
   authStore = inject(AuthStore);
+  router = inject(Router);
 
   private menuOptions: MenuOption[] = [
     {
@@ -66,6 +68,31 @@ export class Sidebar {
   isPlayer = computed(() => this.authStore.user()?.role?.id === 2);
   isAdmin = computed(() => this.authStore.user()?.role?.id === 3);
   isSuperAdmin = computed(() => this.authStore.user()?.role?.id === 4);
+
+  ngOnInit(): void {
+    this.setInitialSidebarState();
+
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        if (window.innerWidth <= 768) {
+          this.isCollapsed.set(true);
+        }
+      });
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.setInitialSidebarState();
+  }
+
+  private setInitialSidebarState(): void {
+    const isMobile = window.innerWidth <= 768;
+
+    this.isCollapsed.set(isMobile);
+  }
 
   menu = computed(() => {
     const roleId = this.authStore.user()?.role?.id;

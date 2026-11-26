@@ -21,7 +21,16 @@
       />
     }
   </div>
-  <div>
+
+  <div class="menu-content">
+    <button
+      class="sidebar-toggle"
+      type="button"
+      (click)="toggleSidebar()"
+      [attr.aria-label]="isCollapsed() ? 'Abrir menú' : 'Cerrar menú'"
+    >
+      <i [class]="isCollapsed() ? 'pi pi-bars' : 'pi pi-times'"></i>
+    </button>
     <nav>
       @if (authStore.isInitialized()) {
         @for (option of menu(); track option.route) {
@@ -34,8 +43,8 @@
         <p>Cargando menú...</p>
       }
       <button (click)="logout()" class="menu-item">
-        <i class="pi pi-sign-out" style="color: var(--color-type-red)"></i>
-        <span class="menu-text" style="color: var(--color-type-red)">Cerrar Sesión</span>
+        <i class="pi pi-sign-out"></i>
+        <span class="menu-text">Cerrar Sesión</span>
       </button>
     </nav>
   </div>
