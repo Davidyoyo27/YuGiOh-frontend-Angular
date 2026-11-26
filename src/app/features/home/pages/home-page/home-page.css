@@ -29,11 +29,24 @@ main {
     gap: 1rem;
 }
 
-.container-second-stats-player{
+.container-second-stats-player {
     display: flex;
     align-items: center;
 }
 
-.last-duels-box{
+.last-duels-box {
     margin: 5rem 0rem 0rem 3rem;
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 768px) {
+    .last-duels-box {
+        margin: .5rem;
+        padding-top: 5rem;
+    }
+
+    .container-second-stats-player {
+        justify-content: center;
+    }
 }

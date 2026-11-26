@@ -67,3 +67,54 @@
     text-align: right;
     color: var(--color-text-third);
 }
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 768px) {
+    .last-duels-card {
+        max-width: 100%;
+    }
+
+    .last-duels-card h3 {
+        padding: .9rem 1rem;
+        font-size: 1.05rem;
+    }
+
+    .duel img {
+        grid-column: 1;
+        grid-row: 1;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .player-name {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        align-self: center;
+        font-size: .9rem;
+    }
+
+    .result {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        width: auto;
+        text-align: left;
+        font-size: .85rem;
+    }
+
+    .score {
+        grid-column: 3;
+        grid-row: 2;
+        width: auto;
+        text-align: right;
+        font-size: .85rem;
+    }
+
+    .time {
+        grid-column: 1 / 4;
+        grid-row: 3;
+        width: auto;
+        text-align: right;
+        font-size: .75rem;
+    }
+}
