@@ -1,6 +1,7 @@
 h1 {
     color: var(--color-title-second);
     margin-bottom: 1rem;
+    font-size: clamp(1.7rem, 2.5vw, 2rem);
 }
 
 p {
